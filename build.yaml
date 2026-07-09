@@ -1,0 +1,7 @@
+include:
+  - board: nice_nano//zmk
+    shield: dabase_v2_right
+  - board: nice_nano//zmk
+    shield: dabase_v2_left
+  - board: nice_nano//zmk
+    shield: settings_reset

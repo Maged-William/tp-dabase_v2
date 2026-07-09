@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "dabase_v2.dtsi"
+
+&pro_micro_i2c {
+    status = "okay";
+    trackpoint: trackpoint@42 {
+        compatible = "trackpoint,i2c";
+        reg = <0x42>;
+    };
+};
+
+/ {
+    trackpoint_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackpoint>;
+    };
+};
+
+&default_transform {
+    col-offset = <6>;
+};
+
+&kscan0 {
+    diode-direction = "col2row";
+    col-gpios
+        = <&gpio0 2  GPIO_ACTIVE_HIGH>
+        , <&gpio0 29 GPIO_ACTIVE_HIGH>
+        , <&gpio0 9  GPIO_ACTIVE_HIGH>
+        , <&gpio1 0  GPIO_ACTIVE_HIGH>
+        , <&gpio1 4  GPIO_ACTIVE_HIGH>
+        , <&gpio1 11 GPIO_ACTIVE_HIGH>
+    ;
+
+    row-gpios
+        = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+    ;
+};
