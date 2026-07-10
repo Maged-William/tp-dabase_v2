@@ -11,6 +11,6 @@ manifest:
       import: app/west.yml
     - name: tp-promini-driver
       remote: maged
-      revision: main
+      revision: polling-fix
   self:
     path: config
